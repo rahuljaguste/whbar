@@ -1,16 +1,17 @@
-import hardhat, {ethers} from 'hardhat';
-
+// @ts-nocheck
+import hardhat from 'hardhat';
+const {hethers} = hardhat;
 async function deploy() {
 	await hardhat.run('compile');
 
 	/**
 	 * Deploying Greeter
 	 */
-	const Greeter = await ethers.getContractFactory("Greeter");
-	const greeter = await Greeter.deploy("Hello, Hardhat!");
-	await greeter.deployed();
+	const Whbar = await hethers.getContractFactory("WHBAR");
+	const whbar = await Whbar.deploy();
+	await whbar.deployed();
 
-	console.log("Greeter deployed to:", greeter.address);
+	console.log("Whbar deployed to:", whbar.address);
 
 	/**
 	 * Verifying Contracts

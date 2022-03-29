@@ -1,22 +1,26 @@
-import '@nomiclabs/hardhat-waffle';
 import '@nomiclabs/hardhat-etherscan';
 import 'hardhat-abi-exporter';
 import 'solidity-coverage';
 import 'hardhat-gas-reporter';
-import * as config from './config';
+import 'hardhat-hethers';
+import * as config from './config.sample';
 import {task} from "hardhat/config";
 
-task('deploy', 'Deploys the Greeter contract')
-    .setAction(async () => {
+task('deploy', 'Deploys the Wrapped Hbar contract').setAction(async () => {
       const deployment = require('./scripts/deploy');
       await deployment();
-    });
+});
+
+task('e2e', 'E2E tests on the Wrapped Hbar contract').setAction(async () => {
+  const e2e = require('./scripts/e2e');
+  await e2e();
+})
 
 module.exports = {
   solidity: {
     compilers: [
       {
-        version: "0.8.11"
+        version: "0.4.18"
       }
     ],
     settings: {
@@ -26,8 +30,11 @@ module.exports = {
       },
     },
   },
-  defaultNetwork: 'hardhat',
-  networks: config.networks,
+  hedera: {
+    networks: config.networks,
+    gasLimit: 3000000
+  },
+  defaultNetwork: 'testnet',
   etherscan: config.etherscan,
   abiExporter: {
     only: [],
