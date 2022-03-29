@@ -28,16 +28,16 @@ export const networks: NetworksUserConfig = {
 		chainId: 293,
 		accounts: [
 			{
-				account: '0.0.34040321',
-				privateKey:'0xb4afbcaa25131e90c78d32064c28b5dcbb2171aa5760a466cbc066059c4b65da'
+				account: '0.0.34055459',
+				privateKey:'0x3fb15b11e402b39359f3dc5d47bae3eaaeb148e5bc73f572244e6f5701e37d97'
 			},
 			{
-				account: '0.0.34040322',
-				privateKey:'0xd5bc345d25589a861a6edf6d99c67278fd262f25251c3c9eb522f182c92dc3a1',
+				account: '0.0.34055460',
+				privateKey:'0x1bd5adb0f6b733927ab06ae5080103b0518e40f7fe99233833c5e567b218aa2a',
 			},
 			{
-				account: '0.0.34040323',
-				privateKey:'0x59b2378160e73ecb92c940c251a91b1a6d90df9e516d62706b5f5e2d826f8fdc'
+				account: '0.0.34055461',
+				privateKey:'0x9ae98a83a04f8ef2420b9edf4751a1acd7f0abec14e24ff23ef9345158ff74e7'
 			}
 		]
 	},

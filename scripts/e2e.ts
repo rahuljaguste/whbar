@@ -1,23 +1,27 @@
 // @ts-nocheck
 import hardhat from 'hardhat';
 const {hethers} = hardhat;
-async function deploy() {
-    await hardhat.run('compile');
+import {expect} from "chai";
 
+async function e2e() {
     const Whbar = await hethers.getContractFactory("WHBAR");
     const whbar = await Whbar.deploy();
     await whbar.deployed();
 
     const supply = await whbar.totalSupply();
-    console.assert(supply == '0', "Supply should be 0");
+    expect(hethers.BigNumber.from(supply).toNumber()).to.be.eq(0);
 
     const name = await whbar.name();
-    console.assert(name == 'Wrapped Hbar', "Name should be 'Wrapped Hbar'");
+    expect(name).to.be.eq('Wrapped Hbar');
 
     const symbol = await whbar.symbol();
-    console.assert(symbol == 'WHBAR', "Symbol should be 'WHBAR'");
+    expect(symbol).to.be.eq('WHBAR');
 
-    console.log('E2E passed!');
+    const deposit = await whbar.deposit({value: 100});
+    const balance = await whbar.balanceOf(deposit.from);
+    expect(hethers.BigNumber.from(balance).toNumber()).to.be.gte(100);
+    console.log('PASSED');
 }
 
-module.exports = deploy;
+
+module.exports = e2e;
