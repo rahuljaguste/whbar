@@ -1,5 +1,5 @@
-// @ts-nocheck
 import hardhat from 'hardhat';
+// @ts-ignore
 const {hethers} = hardhat;
 async function deploy() {
 	await hardhat.run('compile');
@@ -13,14 +13,6 @@ async function deploy() {
 
 	console.log("Whbar deployed to:", whbar.address);
 
-	/**
-	 * Verifying Contracts
-	 */
-	// console.log('Verifying Greeter on Etherscan...');
-	// await hardhat.run('verify:verify', {
-	// 	address: greeter.address,
-	// 	constructorArguments: []
-	// });
 }
 
 module.exports = deploy;
